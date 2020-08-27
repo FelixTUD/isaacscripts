@@ -7,11 +7,12 @@ source isaac.profile
 set -euf -o pipefail
 
 # create directory for isaac code
-export ISAAC_SRC=$HOME/src
+export ISAAC_SRC=$HOME/src/
 mkdir -p $ISAAC_SRC
 
 # create temporary (24 hours) directory for software source files
-export SOURCE_DIR=$HOME/src
+export SOURCE_DIR=$ISAAC_SRC
+export LIB_DIR=$HOME/lib/
 mkdir -p $SOURCE_DIR
 
 
@@ -22,7 +23,7 @@ if [ "$INSTALL_IceT" = true ] && [ ! -d $IceT_DIR ]; then
     cd $SOURCE_DIR/icet
     mkdir .build
     cd .build
-    cmake -DCMAKE_INSTALL_PREFIX=$HOME/lib/icet-2.1.1 \
+    cmake -DCMAKE_INSTALL_PREFIX=$LIB_DIR/icet-2.1.1 \
         $SOURCE_DIR/icet
     make -j4 install
 fi
@@ -34,7 +35,7 @@ if [ "$INSTALL_Jansson" = true ] && [ ! -d $Jansson_DIR ]; then
     cd $SOURCE_DIR/jansson
     mkdir .build
     cd .build
-    cmake -DCMAKE_INSTALL_PREFIX=$HOME/lib/jansson-2.11 \
+    cmake -DCMAKE_INSTALL_PREFIX=$LIB_DIR/jansson-2.11 \
         $SOURCE_DIR/jansson
     make -j4 install
 fi
@@ -46,7 +47,7 @@ if [ "$INSTALL_Libwebsockets" = true ] && [ ! -d $Libwebsockets_DIR ]; then
     cd $SOURCE_DIR/libwebsockets
     mkdir .build
     cd .build
-    cmake -DCMAKE_INSTALL_PREFIX=$HOME/lib/libwebsockets-2.3 \
+    cmake -DCMAKE_INSTALL_PREFIX=$LIB_DIR/libwebsockets-2.3 \
         $SOURCE_DIR/libwebsockets
     make -j4 install
 fi
@@ -58,7 +59,7 @@ if [ "$INSTALL_JPEG" = true ] && [ ! -d $JPEG_DIR ]; then
     cd $SOURCE_DIR/libjpeg-turbo
     mkdir .build
     cd .build
-    cmake -DCMAKE_INSTALL_PREFIX=$HOME/lib/libjpeg-turbo-master \
+    cmake -DCMAKE_INSTALL_PREFIX=$LIB_DIR/libjpeg-turbo-master \
         $SOURCE_DIR/libjpeg-turbo
     make -j4 install
 fi
@@ -68,11 +69,11 @@ cd $HOME
 # get ISAAC and install Server binary
 if [ ! -d $ISAAC_DIR ]; then
     git clone -b $ISAAC_BRANCH git@github.com:ComputationalRadiationPhysics/isaac.git \
-        $HOME/lib/isaac
-    cd $HOME/lib/isaac
+        $LIB_DIR/isaac
+    cd $LIB_DIR/isaac
     mkdir .build
     cd .build
     cmake -DCMAKE_INSTALL_PREFIX=$HOME \
-	$HOME/lib/isaac/server
+	$LIB_DIR/isaac/server
     make -j4 install
 fi
