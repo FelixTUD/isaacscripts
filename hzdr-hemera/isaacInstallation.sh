@@ -7,11 +7,12 @@ source isaac.profile
 set -euf -o pipefail
 
 # create directory for isaac code
-mkdir -p $HOME/src
+export ISAAC_SRC=$HOME/src
+mkdir -p $ISAAC_SRC
 
 # create temporary (24 hours) directory for software source files
-mkdir -p $HOME/src
 export SOURCE_DIR=$HOME/src
+mkdir -p $SOURCE_DIR
 
 
 #   iceT
