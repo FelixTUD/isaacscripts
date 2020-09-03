@@ -15,7 +15,7 @@ if [ "$INSTALL_IceT" = true ] && [ ! -d $IceT_DIR ]; then
     cd $SOURCE_DIR/icet
     mkdir .build
     cd .build
-    cmake -DCMAKE_INSTALL_PREFIX=$HOME/lib/icet-2.1.1 -DICET_USE_OPENGL=OFF \
+    cmake -DCMAKE_INSTALL_PREFIX=$IceT_DIR -DICET_USE_OPENGL=OFF \
         $SOURCE_DIR/icet
     make -j4 install
 fi
@@ -27,7 +27,7 @@ if [ "$INSTALL_Jansson" = true ] && [ ! -d $Jansson_DIR ]; then
     cd $SOURCE_DIR/jansson
     mkdir .build
     cd .build
-    cmake -DCMAKE_INSTALL_PREFIX=$HOME/lib/jansson-2.11 \
+    cmake -DCMAKE_INSTALL_PREFIX=$Jansson_DIR \
         $SOURCE_DIR/jansson
     make -j4 install
 fi
@@ -39,7 +39,7 @@ if [ "$INSTALL_Libwebsockets" = true ] && [ ! -d $Libwebsockets_DIR ]; then
     cd $SOURCE_DIR/libwebsockets
     mkdir .build
     cd .build
-    cmake -DCMAKE_INSTALL_PREFIX=$HOME/lib/libwebsockets-2.3 -DLWS_WITH_SSL=OFF \
+    cmake -DCMAKE_INSTALL_PREFIX=$Libwebsockets_DIR -DLWS_WITH_SSL=OFF \
         $SOURCE_DIR/libwebsockets
     make -j4 install
 fi
@@ -51,7 +51,7 @@ if [ "$INSTALL_JPEG" = true ] && [ ! -d $JPEG_DIR ]; then
     cd $SOURCE_DIR/libjpeg-turbo
     mkdir .build
     cd .build
-    cmake -DCMAKE_INSTALL_PREFIX=$HOME/lib/libjpeg-turbo-master \
+    cmake -DCMAKE_INSTALL_PREFIX=$JPEG_DIR \
         $SOURCE_DIR/libjpeg-turbo
     make -j4 install
 fi
