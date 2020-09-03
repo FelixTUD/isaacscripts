@@ -29,7 +29,7 @@ export ISAAC_LIBS="$HOME/lib"
 
 export IceT_DIR=$ISAAC_LIBS/icet-2.1.1
 export Jansson_DIR=$ISAAC_LIBS/jansson-2.11
-export Libwebsockets_DIR=$ISAAC_LIBS/libwebsockets-2.3
+export Libwebsockets_DIR=$ISAAC_LIBS/libwebsockets-4.0
 export ISAAC_DIR=$ISAAC_LIBS/isaac
 
 export LD_LIBRARY_PATH=$IceT_DIR/lib:$LD_LIBRARY_PATH
